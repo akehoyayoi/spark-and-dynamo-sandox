@@ -1,0 +1,33 @@
+version: "3"
+services:
+  dynamodb:
+    container_name: example-dynamodb
+    image: amazon/dynamodb-local
+    command: -jar DynamoDBLocal.jar -dbPath /home/dynamodblocal/data
+    volumes:
+      - ./persist/dynamodb:/home/dynamodblocal/data
+    ports:
+      - 50706:8000
+  dynamodb-admin:
+    container_name: example-dynamodb-admin
+    build: dynamodb-admin/
+    command: dynamodb-admin -p 8000
+    env_file: dynamodb-admin/.env
+    ports:
+      - 50727:8000
+    depends_on:
+      - dynamodb
+  master:
+    build: spark/
+    ports:
+      - 4040:4040
+      - 8080:8080
+    command: /spark/bin/spark-class org.apache.spark.deploy.master.Master --host 0.0.0.0
+
+  worker:
+    build: spark/
+    depends_on:
+      - master
+    ports:
+      - 8081-8089:8081
+    command: /spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077 --host 0.0.0.0

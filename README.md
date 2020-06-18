@@ -2,7 +2,7 @@
 
 ## How to use
 
-docker-compose -d up
+run `docker-compose -d up`
 
 ## For DynamoDB
 
@@ -42,5 +42,5 @@ scala> ds.map(_ * 2).show()
 
 access `http://localhost:4040/`
 
-can confirm job status
+you can confirm job status during running spark-shell
 

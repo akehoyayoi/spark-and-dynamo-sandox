@@ -44,3 +44,33 @@ access `http://localhost:4040/`
 
 you can confirm job status during running spark-shell
 
+## For S3
+
+### example
+
+```
+$ aws configure --profile minio
+AWS Access Key ID [None]: hogehoge
+AWS Secret Access Key [None]: hogehoge
+Default region name [None]: 
+Default output format [None]: 
+
+# create bucket
+$ aws \
+>   --endpoint-url http://127.0.0.1:9000 \
+>   --profile minio s3 mb s3://hoge
+make_bucket: hoge
+
+# upload file
+$ aws \
+>   --endpoint-url http://127.0.0.1:9000 \
+>   --profile minio s3 cp ./docker-compose.yml \
+>   s3://hoge
+upload: ./docker-compose.yml to s3://hoge/docker-compose.yml   
+
+# get list on minio
+$ aws \
+>   --endpoint-url http://127.0.0.1:9000 \
+>   --profile minio s3 ls s3://hoge
+2020-06-20 11:23:05       1080 docker-compose.yml
+```

@@ -31,3 +31,14 @@ services:
     ports:
       - 8081-8089:8081
     command: /spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077 --host 0.0.0.0
+
+  minio:
+    image: minio/minio:latest
+    volumes:
+      - ./persist/minio:/export
+    ports:
+      - 9000:9000
+    environment:
+      MINIO_ACCESS_KEY: hogehoge
+      MINIO_SECRET_KEY: hogehoge
+    command: server /data

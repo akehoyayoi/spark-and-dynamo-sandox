@@ -44,7 +44,7 @@ access `http://localhost:4040/`
 
 you can confirm job status during running spark-shell
 
-## For S3
+## For S3(minio)
 
 ### example
 
@@ -74,3 +74,5 @@ $ aws \
 >   --profile minio s3 ls s3://hoge
 2020-06-20 11:23:05       1080 docker-compose.yml
 ```
+
+access `http://127.0.0.1:9000/minio`

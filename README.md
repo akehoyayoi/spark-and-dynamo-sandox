@@ -76,3 +76,29 @@ $ aws \
 ```
 
 access `http://127.0.0.1:9000/minio`
+
+### Process
+
+Input:DynamoDB -> Process:Spark -> Output:S3
+
+The process summarize the amount in the trasaction by userId.
+
+#### Input:DynamoDB
+
+TableName: Transaction
+|column|type|
+|id|number|
+|userId|number|
+|amount|number|
+|processedTime|string|
+
+#### Process:Spark
+
+summarize by userId
+
+#### Output:S3
+
+fileName: [YYYYMMDD]/[userId].json
+```
+{"amount":1000}
+```

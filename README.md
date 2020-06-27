@@ -89,10 +89,20 @@ TableName: Transaction
 
 | column | type |
 | ---- | ---- |
-| id | number |
-| userId | number |
-| amount | number |
-| processedTime | string |
+| Id | number(Hash Attribute Name) |
+| UserId | number(Range Attribute Name) |
+| Amount | number |
+| ProcessedTime | string |
+
+example input after creating table
+```
+{
+  "ProcessedTime": "2020-06-01 00:00:00",
+  "Id": 0,
+  "UserId": 0,
+  "Amount": 100
+}
+```
 
 #### Process:Spark
 
@@ -103,4 +113,14 @@ summarize by userId
 fileName: [YYYYMMDD]/[userId].json
 ```
 {"amount":1000}
+```
+
+#### execute
+
+```
+docker-compose run master /spark/bin/spark-submit  \
+--class App \
+--master spark://localhost:7077 \
+--deploy-mode cluster \
+ target/scala-2.11/example-service_2.11-1.0.jar
 ```

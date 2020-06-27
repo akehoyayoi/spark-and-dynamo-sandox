@@ -1,7 +1,6 @@
-name := "Analysis service"
+name := "example service"
 
 version := "1.0"
-
 
 scalaVersion := "2.11.8"
 
@@ -10,7 +9,6 @@ libraryDependencies += "com.amazonaws" % "aws-java-sdk" % "1.11.648"
 
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.6.5"
 libraryDependencies += "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.10.3"
-
 
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.3" % Runtime
 
@@ -23,6 +21,5 @@ libraryDependencies += "io.netty" % "netty" % "3.9.9.Final"
 
 assemblyMergeStrategy in assembly := {
   case PathList("META-INF", xs @ _*) => MergeStrategy.discard
-  case x => MergeStrategy.first
+  case x                             => MergeStrategy.first
 }
-

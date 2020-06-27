@@ -52,8 +52,8 @@ you can confirm job status during running spark-shell
 $ aws configure --profile minio
 AWS Access Key ID [None]: hogehoge
 AWS Secret Access Key [None]: hogehoge
-Default region name [None]: 
-Default output format [None]: 
+Default region name [None]:
+Default output format [None]:
 
 # create bucket
 $ aws \
@@ -66,7 +66,7 @@ $ aws \
 >   --endpoint-url http://127.0.0.1:9000 \
 >   --profile minio s3 cp ./docker-compose.yml \
 >   s3://hoge
-upload: ./docker-compose.yml to s3://hoge/docker-compose.yml   
+upload: ./docker-compose.yml to s3://hoge/docker-compose.yml
 
 # get list on minio
 $ aws \
@@ -86,11 +86,13 @@ The process summarize the amount in the trasaction by userId.
 #### Input:DynamoDB
 
 TableName: Transaction
-|column|type|
-|id|number|
-|userId|number|
-|amount|number|
-|processedTime|string|
+
+| column | type |
+| ---- | ---- |
+| id | number |
+| userId | number |
+| amount | number |
+| processedTime | string |
 
 #### Process:Spark
 

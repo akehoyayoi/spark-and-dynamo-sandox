@@ -9,9 +9,9 @@ case class Transaction(id: Long,
 
 def toTransaction(item: util.Map[String, AttributeValue]): Transaction = {
   Transaction(
-    id = item.get("id"),
-    userId = item.get("userId"),
-    amount = item.get("amount"),
+    id = item.get("id").getS.toLong,
+    userId = item.get("userId").getS.toLong,
+    amount = item.get("amount").getS.toLong,
     processedTime = item.get("processedTime")
   )
 }

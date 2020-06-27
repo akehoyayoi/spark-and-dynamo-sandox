@@ -21,8 +21,9 @@ object App {
     val table = "Transaction"
 
     val conf = new SparkConf()
-      .setAppName("Analyser")
-      .setMaster("local[*]") // here local mode. And * means you will use as much as you have cores.
+      .setAppName("Example")
+      .setMaster("spark://localhost:7077")
+//      .setMaster("local[*]") // here local mode. And * means you will use as much as you have cores.
 
     val sc = SparkContext.getOrCreate(conf)
 
